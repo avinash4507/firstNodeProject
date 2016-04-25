@@ -2,7 +2,7 @@ var express = require('express'); //gives reference to express (no ability to do
 
 var app = express(); //creates instance of express so that now we can do something with express
 
-var port = 5000;
+var port = process.env.PORT || 5000;
 
 // app.use() allows us to setup some middleware
 // whatever is put in here is going to be used by express first before doing anything else
