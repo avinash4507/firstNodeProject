@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/avinash4507/firstNodeProject/issues"
   },
-  "homepage": "https://github.com/avinash4507/firstNodeProject#readme"
+  "homepage": "https://github.com/avinash4507/firstNodeProject#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
