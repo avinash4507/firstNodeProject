@@ -1,0 +1,20 @@
+{
+  "name": "first-node-app",
+  "description": "my first node project",
+  "main": "app.js",
+  "authors": [
+    "avinash <avinash4507@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/avinash4507/firstNodeProject",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
