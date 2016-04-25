@@ -21,11 +21,11 @@ app.use(express.static('src/views'));
 // firstly public directory is looked into then src/view and then routing
 app.get('/', function(request, response){
     response.send('Hello Avinash')
-})  // slash('/') here represents home route (here localhost:5000)
+});  // slash('/') here represents home route (here localhost:5000)
 
 app.get('/books', function(req, res) {
     res.send('Hello Books')
-})
+});
 
 app.listen(port, function(err) {
     console.log('Running on port '+port);
