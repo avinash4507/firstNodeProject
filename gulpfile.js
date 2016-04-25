@@ -17,4 +17,17 @@ gulp.task('style', function() {
         //     verbose: true
         // }))
         .pipe(jscs());
+});
+
+gulp.task('inject', function() {
+    var wiredep = require('wiredep').stream;
+    var options = {
+        bowerJson: require('./bower.json'),
+        directory: './public/lib'
+    }
+    
+    return gulp.src('./src/views/*.html') // pulls in all html files and get us started
+        .pipe(wiredep(options))
+        .pipe(gulp.dest('./src/views'))
+        
 })
