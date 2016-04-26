@@ -14,10 +14,21 @@ var bookRouter = express.Router();
 app.use(express.static('public'));
 
 // html are also a type of static files(just need to serve this file)
-app.use(express.static('src/views'));
-// app.set('views','./src/views');
+// app.use(express.static('src/views'));
+app.set('views','./src/views');
 
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+    res.render('index', {
+        title: 'Hello from render',
+        nav: [{
+            link: '/Books', Title: 'Books'
+        }, {
+            link: '/Authors', Title: 'Authors'
+        }]
+    });
+});
 
 // function() is passed to express that tells it what to do
 // request is info coming from the browser
@@ -36,14 +47,41 @@ app.use(express.static('src/views'));
 //     res.send('Hello Authors');
 // });
 
+var books = [
+    {
+        title: '3 idiots',
+        author: 'baba ranchod das'
+    },
+    {
+        title: 'hangover',
+        author: 'bradley cooper'
+    },
+    {
+        title: 'transporter',
+        author: 'jason straton'
+    },
+    {
+        title: 'batman',
+        author: 'cristopher nolan'
+    }
+];
+
 bookRouter.route('/')
     .get(function(req, res) {
-        res.send('Hello Books');
+        res.render('books', {
+        title: 'Books',
+        nav: [{
+            link: '/Books', Title: 'Books'
+        }, {
+            link: '/Authors', Title: 'Authors'
+        }],
+        Books: books
+    });
     });
 
 bookRouter.route('/single')
     .get(function(req, res) {
-        res.send('Hello Single Book')
+        res.send('Hello Single Book');
     });
 
 app.use('/Books', bookRouter);
