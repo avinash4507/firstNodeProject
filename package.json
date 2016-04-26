@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/avinash4507/firstNodeProject#readme",
   "dependencies": {
+    "ejs": "^2.4.1",
     "express": "^4.13.4",
     "jshint": "^2.9.2"
   },
