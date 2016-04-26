@@ -4,6 +4,8 @@ var app = express(); //creates instance of express so that now we can do somethi
 
 var port = process.env.PORT || 5000;
 
+var bookRouter = express.Router();
+
 // app.use() allows us to setup some middleware
 // whatever is put in here is going to be used by express first before doing anything else
 // express.static(in here we setup a static directory by giving name)
@@ -13,19 +15,38 @@ app.use(express.static('public'));
 
 // html are also a type of static files(just need to serve this file)
 app.use(express.static('src/views'));
+// app.set('views','./src/views');
+
+// app.set('view engine', 'ejs');
 
 // function() is passed to express that tells it what to do
 // request is info coming from the browser
 // response is what we gonna deal with
 // express is taking request and giving back response
 // firstly public directory is looked into then src/view and then routing
-app.get('/', function(request, response) {
-    response.send('Hello Avinash');
-});  // slash('/') here represents home route (here localhost:5000)
+// app.get('/', function(request, response) {
+//     response.send('Hello Avinash');
+// });  // slash('/') here represents home route (here localhost:5000)
 
-app.get('/books', function(req, res) {
-    res.send('Hello Books');
-});
+// app.get('/Books', function(req, res) {
+//     res.send('Hello Books');
+// });
+
+// app.get('/Authors', function(req, res) {
+//     res.send('Hello Authors');
+// });
+
+bookRouter.route('/')
+    .get(function(req, res) {
+        res.send('Hello Books');
+    });
+
+bookRouter.route('/single')
+    .get(function(req, res) {
+        res.send('Hello Single Book')
+    });
+
+app.use('/Books', bookRouter);
 
 app.listen(port, function(err) {
     console.log('Running on port' + port);
