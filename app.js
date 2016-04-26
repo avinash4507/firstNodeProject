@@ -4,7 +4,7 @@ var app = express(); //creates instance of express so that now we can do somethi
 
 var port = process.env.PORT || 5000;
 
-var bookRouter = express.Router();
+var bookRouter = require('./src/routes/bookRoutes');
 
 // app.use() allows us to setup some middleware
 // whatever is put in here is going to be used by express first before doing anything else
@@ -12,6 +12,8 @@ var bookRouter = express.Router();
 // anytime a request is made to css/styles.css, the first thing express does is look into the public directory and see if there is a static file in there and serves it
 // route same as that of static file after that static file wont do anything 
 app.use(express.static('public'));
+
+app.use('/Books', bookRouter);
 
 // html are also a type of static files(just need to serve this file)
 // app.use(express.static('src/views'));
@@ -46,45 +48,6 @@ app.get('/', function(req, res) {
 // app.get('/Authors', function(req, res) {
 //     res.send('Hello Authors');
 // });
-
-var books = [
-    {
-        title: '3 idiots',
-        author: 'baba ranchod das'
-    },
-    {
-        title: 'hangover',
-        author: 'bradley cooper'
-    },
-    {
-        title: 'transporter',
-        author: 'jason straton'
-    },
-    {
-        title: 'batman',
-        author: 'cristopher nolan'
-    }
-];
-
-bookRouter.route('/')
-    .get(function(req, res) {
-        res.render('books', {
-        title: 'Books',
-        nav: [{
-            link: '/Books', Title: 'Books'
-        }, {
-            link: '/Authors', Title: 'Authors'
-        }],
-        Books: books
-    });
-    });
-
-bookRouter.route('/single')
-    .get(function(req, res) {
-        res.send('Hello Single Book');
-    });
-
-app.use('/Books', bookRouter);
 
 app.listen(port, function(err) {
     console.log('Running on port' + port);
