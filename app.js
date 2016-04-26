@@ -4,7 +4,15 @@ var app = express(); //creates instance of express so that now we can do somethi
 
 var port = process.env.PORT || 5000;
 
-var bookRouter = require('./src/routes/bookRoutes');
+var nav = [{
+            link: '/Books',
+            Title: 'Books'
+        },{
+            link: '/Authors',
+            Title: 'Authors'
+        }];
+
+var bookRouter = require('./src/routes/bookRoutes')(nav);
 
 // app.use() allows us to setup some middleware
 // whatever is put in here is going to be used by express first before doing anything else
@@ -13,21 +21,21 @@ var bookRouter = require('./src/routes/bookRoutes');
 // route same as that of static file after that static file wont do anything 
 app.use(express.static('public'));
 
-app.use('/Books', bookRouter);
-
 // html are also a type of static files(just need to serve this file)
 // app.use(express.static('src/views'));
 app.set('views','./src/views');
 
 app.set('view engine', 'ejs');
 
+app.use('/Books', bookRouter);
+
 app.get('/', function(req, res) {
     res.render('index', {
         title: 'Hello from render',
         nav: [{
-            link: '/Books', Title: 'Books'
+            link: '/Books', Title: 'Book'
         }, {
-            link: '/Authors', Title: 'Authors'
+            link: '/Authors', Title: 'Author'
         }]
     });
 });
