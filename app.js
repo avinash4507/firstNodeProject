@@ -19,14 +19,14 @@ app.use(express.static('src/views'));
 // response is what we gonna deal with
 // express is taking request and giving back response
 // firstly public directory is looked into then src/view and then routing
-app.get('/', function(request, response){
-    response.send('Hello Avinash')
+app.get('/', function(request, response) {
+    response.send('Hello Avinash');
 });  // slash('/') here represents home route (here localhost:5000)
 
 app.get('/books', function(req, res) {
-    res.send('Hello Books')
+    res.send('Hello Books');
 });
 
 app.listen(port, function(err) {
-    console.log('Running on port '+port);
+    console.log('Running on port' + port);
 });

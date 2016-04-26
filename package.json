@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/avinash4507/firstNodeProject#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "jshint": "^2.9.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
