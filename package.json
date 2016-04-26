@@ -20,7 +20,8 @@
   "dependencies": {
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "mssql": "^3.2.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
