@@ -18,7 +18,7 @@ var bookRouter = require('./src/routes/bookRoutes')(nav);
 // whatever is put in here is going to be used by express first before doing anything else
 // express.static(in here we setup a static directory by giving name)
 // anytime a request is made to css/styles.css, the first thing express does is look into the public directory and see if there is a static file in there and serves it
-// route same as that of static file after that static file wont do anything 
+// route same as that of static file after that static file wont do anything
 app.use(express.static('public'));
 
 // html are also a type of static files(just need to serve this file)
